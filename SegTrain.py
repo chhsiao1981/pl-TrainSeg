@@ -11,9 +11,7 @@ import os, glob
 from deep_util_highres_rev import *
 from datetime import datetime
 
-pudb.set_trace()
-
-__version__ = '1.0.0'
+__version__ = '1.0.2'
 
 DISPLAY_TITLE = r"""
        _        _____          _____         _       
@@ -56,7 +54,7 @@ parser.add_argument('--view', choices=['axi', 'cor', 'sag'], action='store', des
     min_gpu_limit=0              # set min_gpu_limit=1 to enable GPU
 )
 def main(args: Namespace, inputdir: Path, outputdir: Path):
-    pudb.set_trace()
+    # pudb.set_trace()
     # Use single GPU for the training
     if args.gpu != 'multi':
         os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
