@@ -5,4 +5,4 @@ nibabel
 numpy
 pudb
 conda
-CuDNN==8.6.0
+cuDNN
