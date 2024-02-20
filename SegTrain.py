@@ -54,7 +54,7 @@ parser.add_argument('--view', choices=['axi', 'cor', 'sag'], action='store', des
     min_gpu_limit=0              # set min_gpu_limit=1 to enable GPU
 )
 def main(args: Namespace, inputdir: Path, outputdir: Path):
-    pudb.set_trace()
+    #pudb.set_trace()
     # Use single GPU for the training
     if args.gpu != 'multi':
         os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
@@ -74,7 +74,7 @@ def main(args: Namespace, inputdir: Path, outputdir: Path):
         output_channel = 3
 
     os.makedirs(str(outputdir) + '/' + args.hist_loc, exist_ok=True)
-    
+
     print('\n\n')
     print('\t\t Dataset folder: \t\t\t\t'+os.path.realpath(str(inputdir) + args.split + args.view))
     print(f'\t\t Model weights save location: \t\t\t {outputdir}')
