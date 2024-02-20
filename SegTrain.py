@@ -26,7 +26,7 @@ DISPLAY_TITLE = r"""
 
 parser = ArgumentParser(description='A plugin to perform training',
                         formatter_class=ArgumentDefaultsHelpFormatter)
-#parser.add_argument('-wl', '--weight_save_location', action='store',dest='weight_loc', type=str, default='weights/', help='Output folder name, default: weights/')
+parser.add_argument('-wl', '--weight_save_location', action='store',dest='weight_loc', type=str, default='weights/', help='Output folder name, default: weights/')
 parser = argparse.ArgumentParser('   ==========   Fetal Attention U-Net for CP segmentation on high resolution recontruction script made by Sungmin You (11.10.23 ver.0)   ==========   ')
 parser.add_argument('-hl', '--history_save_location', action='store',dest='hist_loc', type=str, default='history/', help='Output folder name, default: history/')
 parser.add_argument('-is', '--input_shape',action='store', dest='isize',type=int, default = 192, help='Input size 192')
@@ -54,12 +54,13 @@ parser.add_argument('--view', choices=['axi', 'cor', 'sag'], action='store', des
     min_gpu_limit=0              # set min_gpu_limit=1 to enable GPU
 )
 def main(args: Namespace, inputdir: Path, outputdir: Path):
-    # pudb.set_trace()
+    pudb.set_trace()
     # Use single GPU for the training
     if args.gpu != 'multi':
         os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
         os.environ["CUDA_VISIBLE_DEVICES"]=args.gpu
-
+    print(inputdir)
+    print(outputdir)
     n_batch=args.bsize
     input_dim=args.isize
     n_epoch = args.epoch
@@ -72,7 +73,8 @@ def main(args: Namespace, inputdir: Path, outputdir: Path):
     elif args.view == 'sag':
         output_channel = 3
 
-
+    os.makedirs(str(outputdir) + '/' + args.hist_loc, exist_ok=True)
+    
     print('\n\n')
     print('\t\t Dataset folder: \t\t\t\t'+os.path.realpath(str(inputdir) + args.split + args.view))
     print(f'\t\t Model weights save location: \t\t\t {outputdir}')
@@ -95,8 +97,9 @@ def main(args: Namespace, inputdir: Path, outputdir: Path):
     GT_valid_list = sorted(glob.glob(str(inputdir) + '/' + args.split + '/' + args.view + "/valid/*_GT.npy"))
     print("Validation data number: " + str(len(MR_valid_list)))
 
-#    os.makedirs(str(outputdir) + '/' + args.hist_loc, exist_ok=True)
-    Path(outputdir / str(args.hist_loc)).mkdir()
+    
+    
+    #Path(outputdir / str(args.hist_loc)).mkdir()
 #    os.makedirs(args.weight_loc, exist_ok=True)
 
     Training_loader = DataGenerator(MR_list=MR_train_list, GT_list=GT_train_list, out_channels=output_channel, input_dim=input_dim, batch_size=n_batch)
