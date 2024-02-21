@@ -7,7 +7,7 @@ from argparse import ArgumentParser, Namespace, ArgumentDefaultsHelpFormatter
 import numpy as np
 from chris_plugin import chris_plugin, PathMapper
 import os, glob
-#import tensorflow as tf
+import tensorflow as tf
 from deep_util_highres_rev import *
 from datetime import datetime
 
@@ -54,7 +54,7 @@ parser.add_argument('--view', choices=['axi', 'cor', 'sag'], action='store', des
     min_gpu_limit=0              # set min_gpu_limit=1 to enable GPU
 )
 def main(args: Namespace, inputdir: Path, outputdir: Path):
-    #pudb.set_trace()
+    # pudb.set_trace()
     # Use single GPU for the training
     if args.gpu != 'multi':
         os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
