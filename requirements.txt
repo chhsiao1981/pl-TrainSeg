@@ -6,3 +6,4 @@ numpy
 pudb
 conda
 cuDNN
+python==3.10.10

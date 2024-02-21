@@ -5,12 +5,16 @@
 [![ci](https://github.com/FNNDSC/pl-TrainSeg/actions/workflows/ci.yml/badge.svg)](https://github.com/FNNDSC/pl-TrainSeg/actions/workflows/ci.yml)
 
 `pl-TrainSeg` is a [_ChRIS_](https://chrisproject.org/)
-_ds_ plugin which takes in ...  as input files and
-creates ... as output files.
+_ds_ plugin which takes the train and valid data (.npy) as input files and
+creates the weight for one view as output files.
 
 ## Abstract
+In the fetal brain, the measurement of cortical thickness is sensitive to the segmentation of cortical plate (CP), because of the low resolution of magnetic resonance imaging (MRI) due to the relatively small brain size. 
 
-...
+High-resolution MRI data provides detailed delineation of CP enabling accurate cortical thickness measurement. 
+
+This is the training of the Cortical Plate Segmentation in High Resolution MRIs and the second part of our complete pipeline; the input data will be the output of our first part `pl-HighPrepRes`.
+
 
 ## Installation
 
@@ -32,16 +36,23 @@ To print its available options, run:
 apptainer exec docker://fnndsc/pl-TrainSeg SegTrain --help
 ```
 
+## Background
+
+`pl-TrainSeg` needs as input the directory with the folder with your data in numpy format `pl-HighPrepRes` and it reads all the input subdirs and runs a model trainer.
+
+The output will be a folder with the three final weights in format .h5
+
 ## Examples
 
 `SegTrain` requires two positional arguments: a directory containing
 input data, and a directory where to create output data.
-First, create the input directory and move input data into it.
+
+First, create the input directory and move input data into it (it must be a .npy data).
 
 ```shell
 mkdir incoming/ outgoing/
 mv some.dat other.dat incoming/
-apptainer exec docker://fnndsc/pl-TrainSeg:latest SegTrain [--args] incoming/ outgoing/
+apptainer exec docker://fnndsc/pl-TrainSeg:latest SegTrain [--view] incoming/ outgoing/
 ```
 
 ## Development
