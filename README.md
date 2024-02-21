@@ -1,12 +1,12 @@
-# My ChRIS Plugin
+# pl-TrainSeg
 
 [![Version](https://img.shields.io/docker/v/fnndsc/pl-TrainSeg?sort=semver)](https://hub.docker.com/r/fnndsc/pl-TrainSeg)
 [![MIT License](https://img.shields.io/github/license/fnndsc/pl-TrainSeg)](https://github.com/FNNDSC/pl-TrainSeg/blob/main/LICENSE)
 [![ci](https://github.com/FNNDSC/pl-TrainSeg/actions/workflows/ci.yml/badge.svg)](https://github.com/FNNDSC/pl-TrainSeg/actions/workflows/ci.yml)
 
-`pl-TrainSeg` is a [_ChRIS_](https://chrisproject.org/)
+`pl-SegTrain` is a [_ChRIS_](https://chrisproject.org/)
 _ds_ plugin which takes the train and valid data (.npy) as input files and
-creates the weight for one view as output files.
+creates the weight for one view as output files. Please note that due to a minor confusion, the program is called `pl-SegTrain` while the repo is called `TrainSeg`.
 
 ## Abstract
 In the fetal brain, the measurement of cortical thickness is sensitive to the segmentation of cortical plate (CP), because of the low resolution of magnetic resonance imaging (MRI) due to the relatively small brain size. 
