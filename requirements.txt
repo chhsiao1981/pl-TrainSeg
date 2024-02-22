@@ -4,5 +4,5 @@ tensorflow
 nibabel
 numpy
 pudb
-conda
-cuDNN
+# conda
+# cuDNN

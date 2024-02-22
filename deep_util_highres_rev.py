@@ -801,7 +801,10 @@ def make_callbacks(weight_name, history_name, monitor='val_loss', patience=100, 
     from keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
     import six, os, io, time, csv, numpy as np
     from collections import OrderedDict
-    from collections import Iterable
+    try:
+        from collections.abc import Iterable
+    except:
+        from collections import Iterable
     class CSVLogger_time(Callback):
         """Callback that streams epoch results to a csv file.
         Supports all values that can be represented as a string,
