@@ -1,7 +1,7 @@
 # Python version can be changed, e.g.
 # FROM python:3.8
 # FROM ghcr.io/mamba-org/micromamba:1.5.1-focal-cuda-11.3.1
-FROM tensorflow/tensorflow:2.15.0.post1-gpu
+FROM tensorflow/tensorflow:2.14.0-gpu
 
 LABEL org.opencontainers.image.authors="FNNDSC <alan.rivasmunoz@childrens.harvard.edu>" \
       org.opencontainers.image.title="My ChRIS Plugin" \
