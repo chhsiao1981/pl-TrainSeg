@@ -25,7 +25,7 @@ setup(
     author='FNNDSC',
     author_email='alan.rivasmunoz@childrens.harvard.edu',
     url='https://github.com/FNNDSC/pl-TrainSeg',
-    py_modules=['SegTrain'],
+    py_modules=['SegTrain', 'deep_util_highres_rev'],
     install_requires=['chris_plugin'],
     license='MIT',
     entry_points={
